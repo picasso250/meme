@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS `node`
     `text` TEXT NOT NULL COMMENT '内容', 
     `time` DATETIME NOT NULL COMMENT '发表时间',
     PRIMARY KEY(id)
-) ENGINE=MyISAM AUTO_INCREMENT=101;
+) ENGINE=MyISAM;
 
 -- 主题，将节点串起来的东西，分裂自上一个主题 -- todo 是否隐藏
 CREATE TABLE IF NOT EXISTS `topic`
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `topic`
     `nodes` TEXT NOT NULL COMMENT '内容', 
     `time` DATETIME NOT NULL COMMENT '最后被 touch 的时间',
     PRIMARY KEY(id)
-) ENGINE=MyISAM AUTO_INCREMENT=101;
+) ENGINE=MyISAM;
 
 -- 用户，
 CREATE TABLE IF NOT EXISTS `user`
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `user`
     `message` TEXT COMMENT '用户的签名',
     `create_time` DATETIME NOT NULL COMMENT '注册时间',
     PRIMARY KEY(id)
-) ENGINE=MyISAM AUTO_INCREMENT=101;
+) ENGINE=MyISAM;
 
 -- 公共帐号
 CREATE TABLE IF NOT EXISTS `open_account`
@@ -46,4 +46,4 @@ CREATE TABLE IF NOT EXISTS `open_account`
     `openid` CHAR(128) NOT NULL DEFAULT '' COMMENT 'open id', -- 平台open id
     PRIMARY KEY(id),
     FOREIGN KEY(`user`) REFERENCES `user`(id)
-) ENGINE=MyISAM AUTO_INCREMENT=101;
+) ENGINE=MyISAM;
