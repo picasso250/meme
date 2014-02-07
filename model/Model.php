@@ -6,6 +6,7 @@
  * @author ryan
  */
 class Model {
+    public static $table;
 
     public static function orm() {
         return ORM::forTable(static::$table);

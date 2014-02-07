@@ -19,7 +19,7 @@ if (isset($_SERVER['HTTP_APPNAME'])) { // on server
     
     define('DEBUG', TRUE);
     
-    define('ROOT', '/meme/');
+    define('ROOT', '/');
     
     define('JS_VER',  time());
     define('CSS_VER', time());

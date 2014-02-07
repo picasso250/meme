@@ -9,6 +9,7 @@
 
 define('IN_PTF', 1);
 
+require 'vendor/autoload.php';
 require 'config/common.php';
 require 'lib/function.php';
 
@@ -42,4 +43,3 @@ if (count($arr) == 2 && $arr[1] == 'master') {
     $view = 'master';
 }
 include smart_view($view); // 渲染 view
-?>

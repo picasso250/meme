@@ -6,7 +6,7 @@
  * @author ryan
  */
 class OpenAccount extends Model {
-    private static $table = 'open_account';
+    public static $table = 'open_account';
     
     public static function find($platform, $openid) {
         $conds = array(

@@ -11,7 +11,7 @@ include_once Pf::model('Node');
  */
 class Topic extends Model {
     
-    private static $table = 'topic';
+    public static $table = 'topic';
     
     public static function startBy($user_id, $title, $text) {
         
@@ -52,7 +52,11 @@ class Topic extends Model {
     public static function read($conds = array()) {
         extract(self::defaultConds($conds));
         $tail = "LIMIT $limit OFFSET $offset";
-        $topics = Pdb::fetchAll('*', self::$table, array('is_leaf' => null), array('`time` DESC'), $tail);
+        $topics = self::orm()
+            ->orderByDesc('time')
+            ->limit($limit)
+            ->offset($offset)
+            ->findMany();
         return array_map(function ($info) {
             $nodes = json_decode($info['nodes']);
             if (empty($nodes)) {
@@ -75,7 +79,7 @@ class Topic extends Model {
     }
     
     public static function count() {
-        return self::orm()->where('is_leaf', 0)->count();
+        return self::orm()->count();
     }
     
     public function __get($name) {
