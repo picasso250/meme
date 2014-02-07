@@ -30,7 +30,7 @@ $config['site']['name'] = 'meme BBS';
 $config['db'] = array(
     'dsn' => 'mysql:host=localhost;dbname=bbs',
     'username' => 'root',
-    'pwd' => 'xiaosan'
+    'pwd' => ''
 );
 
 $config['qq_login'] = array(

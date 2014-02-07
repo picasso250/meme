@@ -75,7 +75,7 @@ class Topic extends Model {
     }
     
     public static function count() {
-        return Pdb::count(self::$table, array('is_leaf' => null));
+        return self::orm()->where('is_leaf', 0)->count();
     }
     
     public function __get($name) {
