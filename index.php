@@ -11,6 +11,7 @@ define('IN_PTF', 1);
 
 require 'config/common.php';
 require 'lib/function.php';
+require 'vendor/autoload.php';
 
 // 变量初始化
 require 'core/init.php';
@@ -21,9 +22,6 @@ date_default_timezone_set('PRC');
 
 require Pf::controller('init');
 
-if (isset($force_redirect)) { // 强制跳转 这个在整站关闭的时候很有用
-    $controller = $force_redirect;
-}
 $view = $controller;
 
 if (!file_exists(Pf::controller($controller))) {
@@ -42,4 +40,3 @@ if (count($arr) == 2 && $arr[1] == 'master') {
     $view = 'master';
 }
 include smart_view($view); // 渲染 view
-?>

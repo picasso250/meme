@@ -14,9 +14,6 @@ if (is_mobile()) {
     $page['styles'][] = 'mouse';
 }
 
-require_once Pf::lib('Pdb');
-Pdb::setConfig($config['db']);
-
 require_once Pf::lib('QqLogin');
 $qq = new QqLogin($config['qq_login']);
 
@@ -26,4 +23,3 @@ if ($has_login) {
     $user = new User($user_id);
 }
 
-?>

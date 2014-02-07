@@ -10,6 +10,7 @@
     <a><?= $user->name ?></a>
     <a href="<?= ROOT ?>login?logout=1">退出登录</a>
     <?php else: ?>
+    <a href="login">登录</a>
     <a href="<?= $qq->loginHref() ?>">用 QQ 登录</a>
     <?php endif; ?>
 </div>

@@ -52,19 +52,8 @@ class Topic extends Model {
     public static function read($conds = array()) {
         extract(self::defaultConds($conds));
         $tail = "LIMIT $limit OFFSET $offset";
-        $topics = Pdb::fetchAll('*', self::$table, array('is_leaf' => null), array('`time` DESC'), $tail);
-        return array_map(function ($info) {
-            $nodes = json_decode($info['nodes']);
-            if (empty($nodes)) {
-                d($info);
-                throw new Exception('empty nodes');
-            }
-            $info['nodes'] = array_map(function ($id) {
-                return new Node($id);
-            }, $nodes);
-            $info['editor'] = new User($info['editor']);
-            return new Topic($info);
-        }, $topics);
+        // $topics = Pdb::fetchAll('*', self::$table, array('is_leaf' => null), array('`time` DESC'), $tail);
+        return array();
     }
     
     private static function defaultConds($conds) {
@@ -75,7 +64,7 @@ class Topic extends Model {
     }
     
     public static function count() {
-        return Pdb::count(self::$table, array('is_leaf' => null));
+        return 0;
     }
     
     public function __get($name) {

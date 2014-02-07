@@ -1,7 +1,6 @@
-name: phptinyframe
+name: meme
 version: 1
 handle:
-- rewrite: if(path ~ "^/sitemap.xml$") goto "http://sayit-sayitstatic.stor.sinaapp.com/sitemap.xml"
 - rewrite: if(!is_file() && path ~ "^/(.*)/(.*)") goto "/index.php?c=$1&target=$2&%{QUERY_STRING}"
 - rewrite: if(!is_file() && path ~ "^/(.*)") goto "/index.php?c=$1&%{QUERY_STRING}"
 - rewrite: if(!is_file()) goto "/index.php?%{QUERY_STRING}"
