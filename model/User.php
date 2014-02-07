@@ -40,12 +40,6 @@ class User extends Model {
         $arr = array('name' => $name);
         Pdb::update($arr, self::$table, $this->selfCond());
     }
-    
-    public function info() {
-        if (!empty($this->info)) return $this->info;
-        $this->info = Pdb::fetchRow('*', self::$table, $this->selfCond());
-        return $this->info;
-    }
 
     public static function listU($conds=array()) {
         extract(self::defaultConds($conds));
@@ -65,14 +59,6 @@ class User extends Model {
             'limit' => 10,
             'offset' => 0,
         ), $conds);
-    }
-
-    public function __get($name) {
-        if ($name == 'id') return $this->id;
-        if (empty($this->info)) {
-            $this->info = $this->info();
-        }
-        return $this->info[$name];
     }
     
     public function startTopic($title, $text) {

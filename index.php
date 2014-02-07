@@ -20,6 +20,7 @@ ob_start();
 session_start();
 date_default_timezone_set('PRC');
 
+$_SESSION['se_user_id'] = 1; // for test
 require Pf::controller('init');
 
 if (isset($force_redirect)) { // 强制跳转 这个在整站关闭的时候很有用

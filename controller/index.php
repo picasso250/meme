@@ -19,4 +19,3 @@ $topics = Topic::read(array(
 $view .= '?master';
 $page['scripts'][] = 'widget';
 
-?>
