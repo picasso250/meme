@@ -7,7 +7,7 @@ $url = $_SERVER['REQUEST_URI'];
 $arr = explode('?', $url);
 $url = $arr[0];
 $arr = explode('/', $url);
-$controller = isset($arr[1]) ? $arr[1] : 'index';
+$controller = isset($arr[1]) && $arr[1] ? $arr[1] : 'index';
 $action = isset($arr[2]) ? $arr[2] : '';
 $target = isset($arr[3]) ? $arr[3] : '';
 

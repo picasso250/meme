@@ -15,6 +15,7 @@
         <meta name="description" content="<?php echo i($page['description']); ?>" />
         <meta name="keywords" content="<?php echo implode(', ', i($page['keywords'], array())); ?>" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
         <?php
         echo css_node('reset'), "\n";
         echo css_node('style'), "\n";
