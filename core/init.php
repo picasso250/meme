@@ -22,3 +22,5 @@ $ip = $_SERVER['REMOTE_ADDR'];
 ORM::configure($config['db']['dsn']);
 ORM::configure('username', $config['db']['username']);
 ORM::configure('password', $config['db']['pwd']);
+
+$_SESSION['se_user_id'] = 1; // for test

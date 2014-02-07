@@ -57,7 +57,7 @@ class User extends Model {
     }
     
     public static function count() {
-        return Pdb::count(self::$table);
+        return self::orm()->count();
     }
 
     private static function defaultConds($conds) {
@@ -88,4 +88,3 @@ class User extends Model {
     }
 }
 
-?>
