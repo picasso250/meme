@@ -1,7 +1,6 @@
 <?php
-!defined('IN_PTF') && exit('ILLEGAL EXECUTION');
 
-include_once Pf::model('Model');
+namespace model;
 
 /**
  * Description of Node

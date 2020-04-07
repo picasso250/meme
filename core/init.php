@@ -1,5 +1,6 @@
 <?php
-!defined('IN_PTF') && exit('ILLEGAL EXECUTION');
+
+use model\Model;
 
 // c is controller
 // a is action
@@ -8,7 +9,7 @@ $arr = explode('?', $url);
 $url = $arr[0];
 if (strlen(URL_ROOT) > 0) {
     strpos($url, URL_ROOT) === 0 or die("not under root " . URL_ROOT);
-    $url = substr($url,  strlen(URL_ROOT));
+    $url = substr($url, strlen(URL_ROOT));
 }
 $arr = explode('/', $url);
 $controller = isset($arr[1]) && $arr[1] ? $arr[1] : 'index';
@@ -27,7 +28,8 @@ $page = array(
 
 $ip = $_SERVER['REMOTE_ADDR'];
 
-ORM::configure(DB_CONF['dsn']);
-ORM::configure('username', DB_CONF['username']);
-ORM::configure('password', DB_CONF['password']);
-ORM::configure('logging', DEBUG);
+$dbh=new \Pdo(DB_CONF['dsn'], DB_CONF['username'], DB_CONF['password']);
+$dbh->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+$dbh->setAttribute(\PDO::ATTR_EMULATE_PREPARES , false);
+Model::$db = $dbh;
+Model::$logging = DEBUG;

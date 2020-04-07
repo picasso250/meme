@@ -1,5 +1,7 @@
 <?php
-!defined('IN_PTF') && exit('ILLEGAL EXECUTION');
+
+use model\User;
+
 /**
  * @file    init
  * @author  ryan <cumt.xiaochi@gmail.com>
@@ -14,12 +16,11 @@ if (is_mobile()) {
     $page['styles'][] = 'mouse';
 }
 
-require_once Pf::lib('QqLogin');
-$qq = new QqLogin($config['qq_login']);
+// require_once Pf::lib('QqLogin');
+// $qq = new QqLogin($config['qq_login']);
 
-require_once Pf::model('User');
 $user_id = $has_login = i($_SESSION['se_user_id']);
 if ($has_login) {
-    $user = User::orm()->findOne($user_id);
+    $user = User::getById($user_id);
 }
 

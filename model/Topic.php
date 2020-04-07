@@ -1,8 +1,6 @@
 <?php
-!defined('IN_PTF') && exit('ILLEGAL EXECUTION');
 
-include_once Pf::model('Model');
-include_once Pf::model('Node');
+namespace model;
 
 /**
  * Description of Topic
@@ -17,24 +15,13 @@ class Topic extends Model
     public static function startBy($user_id, $title, $text)
     {
 
-        $textArr = self::text2arr($text);
-        var_dump($textArr);exit;
-
-        // create nodes
-        $nodes = json_encode(array_map(function ($text) use ($user_id) {
-            $node = Node::createBy($user_id, $text);
-            return $node->id;
-        }, $textArr));
-
         // insert
-        $t = ORM::for_table(self::$table)->create();
-        $t->editor = $user_id;
-        $t->title = $title;
-        $t->nodes = $nodes;
-        $t->time = date('Y-m-d H:i:s');
-        $t->save();
-
-        return new self(Pdb::lastInsertId());
+        $id = self::insert([
+            'editor' => $user_id,
+            'title' => $title,
+            'text' => $text,
+        ]);
+        return new self(self::getById($id));
     }
 
     public static function text2arr($text)

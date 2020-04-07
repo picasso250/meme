@@ -32,11 +32,11 @@ function js_var($var_name, $arr) {
 }
 
 function _css($file) {
-    return "css/$file.css";
+    return "public/css/$file.css";
 }
 
 function _js($file) {
-    return "js/$file.js";
+    return "public/js/$file.js";
 }
 
 /** translate Y-m-d to xx之前 or 今天XX
@@ -340,5 +340,3 @@ function smart_view($view, $default = 'default') {
         return $m;
     return Pf::view($default);
 }
-
-?>

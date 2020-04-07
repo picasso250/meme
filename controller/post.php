@@ -11,8 +11,7 @@ if ($is_post && $has_login) {
     
     if ($title && $text) {
         $topic = $user->startTopic($title, $text);
-        var_dump(ORM::get_query_log());exit;
-        // redirect('meme/' . $topic->id);
+        redirect('meme/' . $topic->id);
     }
 }
 

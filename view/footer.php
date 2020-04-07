@@ -5,6 +5,5 @@
  * and open the template in the editor.
  */
 ?>
-<div><?= User::count() ?>个用户来过</div>
 <div><a href="https://www.zhihu.com/people/wang-xiao-chi" title="小池有话说">小池</a>制作</div>
 <div>共产主义者 出品</div>

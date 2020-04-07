@@ -1,9 +1,5 @@
 <?php
-!defined('IN_PTF') && exit('ILLEGAL EXECUTION');
-
-require_once Pf::model('Model');
-require_once Pf::model('Topic');
-require_once Pf::model('OpenAccount');
+namespace model;
 
 /**
  *

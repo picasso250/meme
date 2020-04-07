@@ -11,7 +11,7 @@
     <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="标题">
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">content</label>
+    <label for="exampleInputPassword1">内容</label>
     <textarea name="text" class="form-control" id="exampleInputPassword1"></textarea>
   </div>
   <button type="submit" class="btn btn-default">发表</button>

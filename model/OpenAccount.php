@@ -1,5 +1,5 @@
 <?php
-!defined('IN_PTF') && exit('ILLEGAL EXECUTION');
+namespace model;
 /**
  * Description of OpenAccount
  *
