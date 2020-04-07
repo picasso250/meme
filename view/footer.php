@@ -6,5 +6,5 @@
  */
 ?>
 <div><?= User::count() ?>个用户来过</div>
-<div><a href="http://xiaochi2.sinaapp.com/2012/10/meme-bbs/" title="小池的博客: 小池有话说">小池</a>制作</div>
-<div><a href="http://www.corp-so.me/" title="So.Me 官方博客">So.Me</a>出品</div>
+<div><a href="https://www.zhihu.com/people/wang-xiao-chi" title="小池有话说">小池</a>制作</div>
+<div>共产主义者 出品</div>

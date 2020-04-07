@@ -8,7 +8,7 @@
 <form role="form" method="post">
   <div class="form-group">
     <label for="exampleInputEmail1">标题</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="标题">
+    <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="标题">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">content</label>

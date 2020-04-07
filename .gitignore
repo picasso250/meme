@@ -2,3 +2,4 @@
 .svn
 google*.html
 vendor
+.env

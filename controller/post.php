@@ -8,11 +8,12 @@
 if ($is_post && $has_login) {
     $title = req('title');
     $text = req('text');
+    
     if ($title && $text) {
         $topic = $user->startTopic($title, $text);
-        redirect('meme/' . $topic->id);
+        var_dump(ORM::get_query_log());exit;
+        // redirect('meme/' . $topic->id);
     }
 }
 
 $view .= '?master';
-?>
