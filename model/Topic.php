@@ -12,7 +12,7 @@ class Topic extends Model
 
     public static $table = 'topic';
 
-    public static function startBy($user_id, $title, $text)
+    public static function startBy($user_id, $title, $text,$origin=0)
     {
 
         // insert
@@ -20,6 +20,7 @@ class Topic extends Model
             'editor' => $user_id,
             'title' => $title,
             'text' => $text,
+            'origin'=>$origin
         ]);
         return new self(self::getById($id));
     }

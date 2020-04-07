@@ -1,5 +1,6 @@
 <?php
-!defined('IN_PTF') && exit('ILLEGAL EXECUTION');
+
+use model\Topic;
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -8,11 +9,20 @@
 if ($is_post && $has_login) {
     $title = req('title');
     $text = req('text');
-    
+
     if ($title && $text) {
-        $topic = $user->startTopic($title, $text);
-        redirect('meme/' . $topic->id);
+        // insert
+        $id = Topic::insert([
+            'editor' => $user->id,
+            'title' => $title,
+            'text' => $text,
+            'origin' => req('from') ?: 0,
+        ]);
+        redirect('meme/' . $id);
     }
 }
 
+if (req('from')) {
+    $old = Topic::getById(req('from'));
+}
 $view .= '?master';

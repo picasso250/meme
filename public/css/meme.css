@@ -90,3 +90,14 @@ div.control span {
     text-align: right;
     margin-right: 10px;
 }
+.text strong{
+    font-weight: bold;
+}
+.text pre{
+    border-left: 3px solid #5ea29b;
+    padding:10px;
+}
+.text p{
+    line-height:1.7em;
+    margin:0.7em 0;
+}

@@ -23,8 +23,8 @@ class Model
     public function __construct($info, $id = null)
     {
         if ($info) {
-            if(is_numeric($info)) {
-                $info =self::getById($info);
+            if (is_numeric($info)) {
+                $info = self::getById($info);
             }
             foreach ($info as $k => $v) {
                 $this->$k = $v;
@@ -47,7 +47,7 @@ class Model
         // $stmt = $db->prepare("SELECT * FROM `$table` where id=? limit 1");
         // $stmt->execute(array($id));
         list($stmt, $rs) = self::execute("SELECT * FROM `$table` where id=? limit 1", [$id]);
-        return new static($stmt->fetch());
+        return new static($stmt->fetch(pdo::FETCH_ASSOC));
     }
     public static function findOne($where)
     {
@@ -68,15 +68,13 @@ class Model
             }
             $ws = " WHERE " . implode(' AND ', $s);
         }
-        // $stmt = $db->prepare("SELECT * FROM `$table` $ws LIMIT $n");
-        // $stmt->execute($where);
-        list($stmt, $rs) = self::execute("SELECT * FROM `$table` $ws LIMIT $n", $where);
-        return $stmt->fetchAll();
+        // list($stmt, $rs) = self::execute("SELECT * FROM `$table` $ws LIMIT $n", $where);
+        return $stmt->fetchAll("SELECT * FROM `$table` $ws LIMIT $n", $where);
     }
-    public static function fetchAll($sql, $where)
+    public static function fetchAll($sql, $where = [])
     {
         list($stmt, $rs) = self::execute($sql, $where);
-        return $stmt->fetchAll();
+        return $stmt->fetchAll(pdo::FETCH_OBJ);
     }
     public static function insert($kvs)
     {
@@ -160,6 +158,19 @@ class Model
     public static function getLog()
     {
         return self::$log;
+    }
+    public static function findByIds($ids)
+    {
+        $ids = array_unique($ids);
+        $n = count($ids);
+        $idss = implode(',', $ids);
+        $table = static::$table;
+        $a = User::fetchAll("SELECT * from `$table` where id in($idss) limit $n");
+        $t = [];
+        foreach ($a as $e) {
+            $t[$e->id] = $e;
+        }
+        return $t;
     }
 
 }

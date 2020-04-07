@@ -31,7 +31,7 @@ ul.list li {
     padding: 10px;
 }
 ul.list li:nth-child(2n) {
-    background-color: #F7CFCF;
+    background-color: #FFF3F3;
 }
 ul.list li:hover {
     background-color: #EF9898;

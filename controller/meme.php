@@ -10,6 +10,9 @@ if ($target) {
 
     $topic = new Topic($target);
     $editor = new User($topic->editor);
+    if($topic->origin){
+        $origin=new Topic($topic->origin);
+    }
 
     if ($is_ajax) {
         // login todo
