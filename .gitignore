@@ -3,3 +3,4 @@
 google*.html
 vendor
 .env
+.vscode/
