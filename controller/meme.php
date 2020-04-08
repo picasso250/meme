@@ -9,6 +9,7 @@ if (is_numeric($action)) {
 if ($target) {
 
     $topic = new Topic($target);
+    Topic::updateById(['hit' => $topic->hit + 1], $topic->id);
     $editor = new User($topic->editor);
     if ($topic->origin) {
         $origin = new Topic($topic->origin);

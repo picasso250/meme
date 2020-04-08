@@ -10,6 +10,7 @@
     <a><?= $user->name ?></a>
     <a href="<?= ROOT ?>login?logout=1">退出登录</a>
     <?php else: ?>
+    <a href="<?= ROOT ?>login">登录</a>
     <?php endif; ?>
 </div>
 <h1><a href="<?= ROOT ?>" title="Meme BBS">Meme BBS</a></h1>

@@ -18,6 +18,7 @@ if ($is_post && $has_login) {
             'text' => $text,
             'origin' => req('from') ?: 0,
         ]);
+        Topic::updateById(['hit' => $id], $id);
         redirect('meme/' . $id);
     }
 }
