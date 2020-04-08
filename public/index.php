@@ -13,6 +13,7 @@ define('IN_PTF', 1);
 chdir(dirname(__DIR__));
 spl_autoload_register();
 
+require 'vendor/autoload.php';
 require 'config/common.php';
 require 'lib/function.php';
 

@@ -31,6 +31,7 @@ define('URL_ROOT', isset($env['URL_ROOT']) ? $env['URL_ROOT'] : '');
 define('ROOT', URL_ROOT . '/');
 isset($env['DB']) or die("no DB in env");
 define('DB_CONF', $env['DB']);
+define('SITE_URL',$env['SITE_URL']);
 // end .env
 
 // all config goes below

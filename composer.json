@@ -1,5 +1,5 @@
 {
     "require": {
-        "j4mie/idiorm": "1.4.x"
+        "phpmailer/phpmailer": "~6.1"
     }
 }

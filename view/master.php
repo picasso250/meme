@@ -23,6 +23,7 @@
             echo css_node($style), "\n";
         }
         ?>
+        <script>var URL_ROOT='<?=URL_ROOT?>';</script>
     </head>
     <?php ob_flush(); ?>
     <body>
