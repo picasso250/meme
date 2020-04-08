@@ -16,5 +16,6 @@ if ($a && $b) {
 if (!($a && $b)) {
     die("no a b in db");
 }
+Topic::updateById(['merge' => $b->id], $a->id);
 
-$view .= '?master';
+redirect('meme/'.$a->id);

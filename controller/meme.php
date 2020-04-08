@@ -10,8 +10,17 @@ if ($target) {
 
     $topic = new Topic($target);
     $editor = new User($topic->editor);
-    if($topic->origin){
-        $origin=new Topic($topic->origin);
+    if ($topic->origin) {
+        $origin = new Topic($topic->origin);
+    }
+    $text = $topic->text;
+    if ($topic->merge) {
+        $merge = new Topic($topic->merge);
+        $text = $merge->text;
+    }
+    $forks = Topic::find(['origin' => $topic->id]);
+    if ($forks) {
+        $users = User::findByIds(array_column($forks, 'editor'));
     }
 
     if ($is_ajax) {
@@ -55,3 +64,41 @@ if ($target) {
 }
 
 $view .= '?master';
+
+function edit_distance($a, $b)
+{
+    if (mb_strlen($a) == 0) {
+        return mb_strlen($b);
+    }
+
+    if (mb_strlen($b) == 0) {
+        return mb_strlen($a);
+    }
+
+    $m = mb_strlen($a) + 1;
+    $n = mb_strlen($b) + 1;
+
+    $matrix = array_fill(0, $m, array_fill(0, $n, 0));
+    $matrix[0][0] = 0;
+    for ($i = 1; $i < $m; $i++) {
+        $matrix[$i][0] = $matrix[$i - 1][0] + 1;
+    }
+    for ($j = 1; $j < $m; $j++) {
+        $matrix[0][$j] = $matrix[0][$j - 1] + 1;
+    }
+    $cost = 0;
+
+    for ($i = 1; $i < $m; $i++) {
+        for ($j = 1; $j < $n; $j++) {
+            if (mb_substr($a, $i - 1, 1) == mb_substr($b, $j - 1, 1)) {
+                $cost = 0;
+            } else {
+                $cost = 1;
+            }
+
+            $matrix[$i][$j] = min($matrix[$i - 1][$j] + 1, $matrix[$i][$j - 1] + 1, $matrix[$i - 1][$j - 1] + $cost);
+        }
+    }
+
+    return $matrix[$m - 1][$n - 1];
+}

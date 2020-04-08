@@ -14,6 +14,9 @@ del{
 <textarea id="a"><?=$a->text?></textarea>
 <textarea id="b"><?=$b->text?></textarea>
 <pre id="result"></pre>
+<?php if($has_login&& $a->editor==$user->id):?>
+<a href="../../merge/<?=$a->id?>/<?=$b->id?>" class="btn btn-default">merge</a>
+<?php endif;?>
 <script>
 var a = document.getElementById('a');
 var b = document.getElementById('b');

@@ -3,5 +3,5 @@ meme
 
 todo
 
-[ ] pretty diff
+[x] pretty diff
 [ ] login by email

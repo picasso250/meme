@@ -69,7 +69,7 @@ class Model
             $ws = " WHERE " . implode(' AND ', $s);
         }
         // list($stmt, $rs) = self::execute("SELECT * FROM `$table` $ws LIMIT $n", $where);
-        return $stmt->fetchAll("SELECT * FROM `$table` $ws LIMIT $n", $where);
+        return self::fetchAll("SELECT * FROM `$table` $ws LIMIT $n", $where);
     }
     public static function fetchAll($sql, $where = [])
     {
