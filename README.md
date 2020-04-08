@@ -4,4 +4,4 @@ meme
 todo
 
 [x] pretty diff
-[ ] login by email
+[x] login by email
