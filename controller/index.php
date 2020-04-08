@@ -11,7 +11,7 @@ use model\User;
 $per_page = 100;
 $id = req('id') ?: 1;
 $n = $per_page + 1;
-$topics = Topic::fetchAll("SELECT * from topic where id>=? order by id DESC limit $n", [$id]);
+$topics = Topic::fetchAll("SELECT * from topic where id>=? and `merge`=0 order by hit DESC limit $n", [$id]);
 $uids = array_map(function ($e) {
     return $e->editor;
 }, $topics);
